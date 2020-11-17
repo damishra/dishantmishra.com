@@ -1,6 +1,6 @@
 import { css } from '@emotion/react';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useRouter } from 'next/router';
 
 const externalLink = css`
   width: 75px;
@@ -23,21 +23,32 @@ const externalLink = css`
   }
 `;
 
-const pageLink = css`
-  text-decoration: none;
-  color: #ffffff;
-  user-select: none;
-  font-size: 1rem;
+const PageLink = ({ children, href }) => {
+  const router = useRouter();
+  return (
+    <Link href={href}>
+      <a
+        css={css`
+          text-decoration: none;
+          color: #ffffff;
+          user-select: none;
+          font-size: 1rem;
 
-  &:hover {
-    color: #ff0062;
-    cursor: pointer;
-  }
-`;
+          &:hover {
+            color: #ff0062;
+            cursor: pointer;
+          }
+        `}
+        style={{
+          color: router.pathname === href ? '#ff0062' : '#ffffff',
+        }}>
+        {children}
+      </a>
+    </Link>
+  );
+};
 
 const Navigation = ({ theme }) => {
-  let [currentPage, setCurrentPage] = useState('home');
-
   return (
     <>
       <nav
@@ -114,46 +125,10 @@ const Navigation = ({ theme }) => {
               grid-template-columns: auto auto auto auto;
               gap: 1rem;
             `}>
-            <Link href='/'>
-              <a
-                css={pageLink}
-                style={{
-                  color: currentPage === 'home' ? '#ff0062' : '#ffffff',
-                }}
-                onClick={() => setCurrentPage('home')}>
-                $home
-              </a>
-            </Link>
-            <Link href='/portfolio'>
-              <a
-                css={pageLink}
-                style={{
-                  color: currentPage === 'portfolio' ? '#ff0062' : '#ffffff',
-                }}
-                onClick={() => setCurrentPage('portfolio')}>
-                $portfolio
-              </a>
-            </Link>
-            <Link href='/about'>
-              <a
-                css={pageLink}
-                style={{
-                  color: currentPage === 'about' ? '#ff0062' : '#ffffff',
-                }}
-                onClick={() => setCurrentPage('about')}>
-                $about
-              </a>
-            </Link>
-            <Link href='contact'>
-              <a
-                css={pageLink}
-                style={{
-                  color: currentPage === 'contact' ? '#ff0062' : '#ffffff',
-                }}
-                onClick={() => setCurrentPage('contact')}>
-                $contact
-              </a>
-            </Link>
+            <PageLink href='/'>$home</PageLink>
+            <PageLink href='/portfolio'>$portfolio</PageLink>
+            <PageLink href='/about'>$about</PageLink>
+            <PageLink href='/contact'>$contact</PageLink>
           </section>
         </div>
       </nav>
