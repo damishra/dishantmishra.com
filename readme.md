@@ -16,3 +16,5 @@ Source code for my personal portfolio hosted at
     "rebass": "^4.0.7"
   }
 ```
+
+Hosted with <3 by [Vercel](https://vercel.com)
