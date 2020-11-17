@@ -6,6 +6,7 @@ const Index = () => {
       <Head>
         <title>Dishant Mishra - Home</title>
       </Head>
+      <main></main>
     </>
   );
 };
