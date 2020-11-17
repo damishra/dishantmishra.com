@@ -17,4 +17,4 @@ Source code for my personal portfolio hosted at
   }
 ```
 
-Hosted with <3 by [Vercel](https://vercel.com)
+Hosted with :purple_heart: by [Vercel](https://vercel.com)
