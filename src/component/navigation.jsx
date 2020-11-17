@@ -58,9 +58,9 @@ const ExternalLink = ({ href, children }) => (
 
 const Navigation = () => {
   const externals = [
-    { path: 'https://github.com/damishra', label: 'github' },
-    { path: 'https://linkedin.com/in/damishra', label: 'linkedin' },
-    { path: '/documents/resume.pdf', label: 'resume' },
+    { path: 'https://github.com/damishra', label: 'GitHub' },
+    { path: 'https://linkedin.com/in/damishra', label: 'LinkedIn' },
+    { path: '/documents/resume.pdf', label: 'Resume' },
   ];
   const internals = [
     { path: '/', label: 'home' },
