@@ -12,6 +12,7 @@ const PageLink = ({ children, href }) => {
           color: #ffffff;
           user-select: none;
           font-size: 1rem;
+          text-transform: capitalize;
 
           &:hover {
             color: #ff0062;
@@ -21,7 +22,7 @@ const PageLink = ({ children, href }) => {
         style={{
           color: router.pathname === href ? '#ff0062' : '#ffffff',
         }}>
-        ${children}
+        {children}
       </a>
     </Link>
   );
