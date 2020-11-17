@@ -2,27 +2,6 @@ import { css } from '@emotion/react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
-const externalLink = css`
-  width: 75px;
-  height: 25px;
-  line-height: 25px;
-  font-size: 0.8rem;
-  color: #ff0062;
-  background-color: #000000;
-  border: 1px solid #ff0062;
-  display: block;
-  text-align: center;
-  border-radius: 5px;
-  user-select: none;
-  text-decoration: none;
-
-  &:hover {
-    background-color: #ff0062;
-    color: #000000;
-    cursor: pointer;
-  }
-`;
-
 const PageLink = ({ children, href }) => {
   const router = useRouter();
   return (
@@ -42,13 +21,52 @@ const PageLink = ({ children, href }) => {
         style={{
           color: router.pathname === href ? '#ff0062' : '#ffffff',
         }}>
-        {children}
+        ${children}
       </a>
     </Link>
   );
 };
 
-const Navigation = ({ theme }) => {
+const ExternalLink = ({ href, children }) => (
+  <a
+    target='_blank'
+    href={href}
+    css={css`
+      width: 73px;
+      height: 23px;
+      line-height: 23px;
+      font-size: 0.8rem;
+      color: #ff0062;
+      background-color: #000000;
+      border: 1px solid #ff0062;
+      display: block;
+      text-align: center;
+      border-radius: 5px;
+      user-select: none;
+      text-decoration: none;
+
+      &:hover {
+        background-color: #ff0062;
+        color: #000000;
+        cursor: pointer;
+      }
+    `}>
+    {children}
+  </a>
+);
+
+const Navigation = () => {
+  const externals = [
+    { path: 'https://github.com/damishra', label: 'github' },
+    { path: 'https://linkedin.com/in/damishra', label: 'linkedin' },
+    { path: '/documents/resume.pdf', label: 'resume' },
+  ];
+  const internals = [
+    { path: '/', label: 'home' },
+    { path: '/portfolio', label: 'portfolio' },
+    { path: '/about', label: 'about' },
+    { path: '/contact', label: 'contact' },
+  ];
   return (
     <>
       <nav
@@ -98,25 +116,11 @@ const Navigation = ({ theme }) => {
               gap: 0.5rem;
               margin-top: 25px;
             `}>
-            <a
-              target='_blank'
-              href='https://github.com/damishra'
-              css={externalLink}>
-              github
-            </a>
-            <a
-              target='_blank'
-              href='https://linkedin.com/in/damishra'
-              css={externalLink}>
-              linkedin
-            </a>
-            <a
-              target='_blank'
-              href='/documents/resume.pdf'
-              css={externalLink}
-              download>
-              resume
-            </a>
+            {externals.map((value, key) => (
+              <ExternalLink key={key} href={value.path}>
+                {value.label}
+              </ExternalLink>
+            ))}
           </section>
           <div />
           <section
@@ -125,10 +129,11 @@ const Navigation = ({ theme }) => {
               grid-template-columns: auto auto auto auto;
               gap: 1rem;
             `}>
-            <PageLink href='/'>$home</PageLink>
-            <PageLink href='/portfolio'>$portfolio</PageLink>
-            <PageLink href='/about'>$about</PageLink>
-            <PageLink href='/contact'>$contact</PageLink>
+            {internals.map((value, key) => (
+              <PageLink key={key} href={value.path}>
+                {value.label}
+              </PageLink>
+            ))}
           </section>
         </div>
       </nav>

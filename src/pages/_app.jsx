@@ -1,6 +1,5 @@
 import '../base.global.css';
 import Head from 'next/head';
-import { ThemeProvider } from '@emotion/react';
 import Navigation from '../component/navigation';
 
 const Root = ({ Component, ...pageProps }) => {
