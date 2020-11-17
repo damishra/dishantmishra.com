@@ -15,3 +15,5 @@ const Root = ({ Component, ...pageProps }) => {
     </>
   );
 };
+
+export default Root;
