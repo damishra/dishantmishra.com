@@ -12,8 +12,6 @@ Source code for my personal portfolio hosted at
     "next": "^10.0.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
-    "react-feather": "^2.0.8",
-    "rebass": "^4.0.7"
   }
 ```
 
