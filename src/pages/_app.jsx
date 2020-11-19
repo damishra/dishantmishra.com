@@ -39,8 +39,8 @@ const Root = ({ Component, ...pageProps }) => {
             }
 
             * {
-              transition: color 200ms ease-in-out,
-                background-color 200ms ease-in-out;
+              transition: color 100ms ease-in-out,
+                background-color 100ms ease-in-out;
             }
           `}
         />
