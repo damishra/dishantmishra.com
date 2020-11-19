@@ -10,6 +10,7 @@ const Base = {
 };
 
 export const Dark = {
+  type: 'dark',
   ...Base,
   primaryText: SnowStorm.nord6,
   secondaryText: SnowStorm.nord5,
@@ -20,6 +21,7 @@ export const Dark = {
 };
 
 export const Light = {
+  type: 'light',
   ...Base,
   primaryText: PolarNight.nord0,
   secondaryText: PolarNight.nord1,

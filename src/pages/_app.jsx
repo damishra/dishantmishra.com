@@ -3,10 +3,14 @@ import Head from 'next/head';
 import Navigation from '../components/navigation';
 import { Light, Dark } from '../theme';
 import { ThemeProvider, Global, css } from '@emotion/react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const Root = ({ Component, ...pageProps }) => {
   let [dark, setTheme] = useState(true);
+  useEffect(() => {
+    const last = localStorage.getItem('theme');
+    setTheme(last === 'dark' ? true : false);
+  });
   return (
     <>
       <Head>

@@ -1,7 +1,57 @@
 import { css, useTheme } from '@emotion/react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { useRouter } from 'next/router';
+import { useEffect } from 'react';
+
+const ThemeSwitcher = ({ setTheme }) => {
+  const theme = useTheme();
+  const selectHandler = e => {
+    switch (e.target.value) {
+      case 'dark':
+        setTheme(true);
+        break;
+      case 'light':
+        setTheme(false);
+        break;
+      default:
+        break;
+    }
+    localStorage.setItem('theme', e.target.value);
+    e.target.value = localStorage.getItem('theme');
+  };
+  useEffect(() => {});
+  return (
+    <section>
+      <label
+        css={css`
+          font-size: 0.8rem;
+          font-weight: 700;
+          margin-right: 0.3rem;
+        `}
+        htmlFor='theme'>
+        Theme:{' '}
+      </label>
+      <select
+        css={css`
+          width: 100px;
+          height: 25px;
+          border-radius: 5px;
+          border: none;
+          outline: none;
+          font-size: 0.8rem;
+          appearance: none;
+          background-color: ${theme.tertiaryBackground};
+          color: ${theme.secondaryText};
+        `}
+        onChange={e => selectHandler(e)}
+        id='theme'
+        name='theme'>
+        <option value='dark'>Dark</option>
+        <option value='light'>Light</option>
+      </select>
+    </section>
+  );
+};
 
 const PageLink = ({ children, href }) => {
   const theme = useTheme();
@@ -93,7 +143,7 @@ const Navigation = ({ themeState, logo }) => {
             height: 100px;
             line-height: 100px;
             display: grid;
-            grid-template-columns: auto auto 1fr auto;
+            grid-template-columns: auto auto 1fr auto auto;
             gap: 2rem;
           `}>
           <section
@@ -108,12 +158,21 @@ const Navigation = ({ themeState, logo }) => {
                 grid-template-rows: 1fr auto 1fr;
               `}>
               <div />
-              <Image
-                src={`/logos/${logo ? 'dark' : 'light'}1024.png`}
-                width={24}
-                height={24}
-                alt='logo belonging to Dishant Mishra'
-              />
+              {theme.type === 'dark' ? (
+                <img
+                  src={`/logos/dark32.png`}
+                  width={24}
+                  height={24}
+                  alt='logo belonging to Dishant Mishra'
+                />
+              ) : (
+                <img
+                  src={`/logos/light32.png`}
+                  width={24}
+                  height={24}
+                  alt='logo belonging to Dishant Mishra'
+                />
+              )}
               <div />
             </div>
 
@@ -146,6 +205,7 @@ const Navigation = ({ themeState, logo }) => {
             <div />
           </div>
           <div />
+          <ThemeSwitcher setTheme={themeState} />
           <section
             css={css`
               display: grid;
