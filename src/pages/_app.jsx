@@ -1,24 +1,48 @@
 import '../base.global.css';
 import Head from 'next/head';
-import Navigation from '../component/navigation';
+import Navigation from '../components/navigation';
+import { Light, Dark } from '../theme';
+import { ThemeProvider, Global, css } from '@emotion/react';
+import { useState } from 'react';
 
 const Root = ({ Component, ...pageProps }) => {
+  let [dark, setTheme] = useState(true);
   return (
     <>
       <Head>
         <meta charSet='utf-8' />
         <meta name='viewport' content='width=device-width, initial-scale=1' />
-        <link rel='shortcut icon' href='/favicon.ico' type='image/x-icon' />
-        <link rel='icon' href='/favicon.ico' type='image/x-icon' />
+        <link
+          rel='icon'
+          type='image/png'
+          href={`/logos/${dark ? 'dark' : 'light'}16.png`}
+        />
         <meta name='description' content="Dishant Mishra's portfolio" />
         <link rel='preconnect' href='https://fonts.gstatic.com' />
         <link
-          href='https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;600;800&family=Lato:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&display=swap'
+          href='https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap'
           rel='stylesheet'
         />
       </Head>
-      <Navigation />
-      <Component {...pageProps} />
+      <ThemeProvider theme={dark ? Dark : Light}>
+        <Global
+          styles={css`
+            html {
+              color: ${dark ? Dark.primaryText : Light.primaryText};
+              background-color: ${dark
+                ? Dark.primaryBackground
+                : Light.primaryBackground};
+            }
+
+            * {
+              transition: color 200ms ease-in-out,
+                background-color 200ms ease-in-out;
+            }
+          `}
+        />
+        <Navigation themeState={setTheme} logo={dark} />
+        <Component {...pageProps} />
+      </ThemeProvider>
     </>
   );
 };
