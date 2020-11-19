@@ -42,6 +42,7 @@ const ThemeSwitcher = ({ setTheme }) => {
           appearance: none;
           background-color: ${theme.tertiaryBackground};
           color: ${theme.secondaryText};
+          padding: 0 0.3rem;
         `}
         onChange={e => selectHandler(e)}
         id='theme'
