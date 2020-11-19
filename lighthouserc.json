@@ -2,7 +2,7 @@
   "ci": {
     "collect": {
       "startServerCommand": "npm run start",
-      "startServerReadyPattern": "server started on",
+      "startServerReadyPattern": "ready - started server on",
       "url": [
         "http://localhost:3000",
         "http://localhost:3000/portfolio",
