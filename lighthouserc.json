@@ -4,10 +4,10 @@
       "startServerCommand": "npm run start",
       "startServerReadyPattern": "ready on",
       "url": [
-        "https://dishantmishra.com",
-        "https://dishantmishra.com/portfolio",
-        "https://dishantmishra.com/about",
-        "https://dishantmishra.com/contact"
+        "http://localhost:3000",
+        "http://localhost:3000/portfolio",
+        "http://localhost:3000/about",
+        "http://localhost:3000/contact"
       ],
       "numberOfRuns": 3
     },
