@@ -1,7 +1,6 @@
 import { css, useTheme } from '@emotion/react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { useEffect } from 'react';
 
 const ThemeSwitcher = ({ setTheme }) => {
   const theme = useTheme();
@@ -19,7 +18,6 @@ const ThemeSwitcher = ({ setTheme }) => {
     localStorage.setItem('theme', e.target.value);
     e.target.value = localStorage.getItem('theme');
   };
-  useEffect(() => {});
   return (
     <section>
       <label
@@ -151,7 +149,7 @@ const Navigation = ({ themeState, logo }) => {
             css={css`
               display: grid;
               grid-template-columns: auto auto;
-              gap: 0.5rem;
+              gap: 1rem;
             `}>
             <div
               css={css`
@@ -162,15 +160,15 @@ const Navigation = ({ themeState, logo }) => {
               {theme.type === 'dark' ? (
                 <img
                   src={`/logos/dark32.png`}
-                  width={24}
-                  height={24}
+                  width={32}
+                  height={32}
                   alt='logo belonging to Dishant Mishra'
                 />
               ) : (
                 <img
                   src={`/logos/light32.png`}
-                  width={24}
-                  height={24}
+                  width={32}
+                  height={32}
                   alt='logo belonging to Dishant Mishra'
                 />
               )}
