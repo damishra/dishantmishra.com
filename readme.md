@@ -1,4 +1,6 @@
 # `dishantmishra.com`
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fdamishra%2Fdishantmishra.com.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fdamishra%2Fdishantmishra.com?ref=badge_shield)
+
 
 Source code for my personal portfolio hosted at
 [dishantmishra.com](https://dishantmishra.com).
@@ -16,3 +18,7 @@ Source code for my personal portfolio hosted at
 ```
 
 Hosted with :purple_heart: by [Vercel](https://vercel.com)
+
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fdamishra%2Fdishantmishra.com.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fdamishra%2Fdishantmishra.com?ref=badge_large)
